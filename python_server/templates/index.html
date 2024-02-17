@@ -52,6 +52,7 @@
         function shutdownServer() {
     var confirmation = window.confirm("Are you sure you want to shut down the server?");
     if (confirmation) {
+        window.alert('Server has been shut down.');
         fetch('/shutdown', { method: 'POST' })
             .then(() => {
                 window.alert('Server has been shut down.');
@@ -69,6 +70,8 @@
             <div class="menu-item special-text">Server-Base-datos, hecho con:</div>
             <img src="{{ url_for('static', filename='images/python_logo.jpg') }}" class="image"/>
             <button onclick="shutdownServer()" class="btn btn-danger">Shut Down Server</button>
+            <!-- para colocar botones de acceso -->
+            <button onclick="window.location.href='/calculator'">Go to Calculator</button>
         </div>
     </div>
 </body>

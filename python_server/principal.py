@@ -1,10 +1,17 @@
 import os
 import signal
 from flask import Flask, render_template, request, redirect
+############################################################################################################
+from calculadora_blueprint import calculator_blueprint
 
-# http://127.0.0.1:5000
+# importo el blueprint de inicio
+
+# se ejecuta el servidor con el comando: python3 principal.py
+# mirar en el navegador http://127.0.0.1:5000
 
 app = Flask(__name__)
+# ------------------------------- blueprints --------------------------------
+app.register_blueprint(calculator_blueprint)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
