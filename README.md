@@ -1,1 +1,3 @@
-# Base_datos_practica
+# Base datos practica
+
+Este Repositorio tendra de base de datos y python.

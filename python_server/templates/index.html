@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #343a40;
+            color: white;
+        }
+        .menu {
+            width: 300px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .menu-item {
+            padding: 10px;
+            border-bottom: 1px solid white;
+        }
+        .centered-image {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .special-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+    <style>
+        .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px; /* Adjust this value to your desired fixed height */
+        }
+        
+        .container img {
+        max-width: 100%;
+        max-height: 100%;
+        }
+    </style>
+    <script>
+        function shutdownServer() {
+    var confirmation = window.confirm("Are you sure you want to shut down the server?");
+    if (confirmation) {
+        fetch('/shutdown', { method: 'POST' })
+            .then(() => {
+                window.alert('Server has been shut down.');
+            })
+            .catch((error) => {
+                console.error('Error shutting down server:', error);
+            });
+    }
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="menu-item special-text">Server-Base-datos, hecho con:</div>
+            <img src="{{ url_for('static', filename='images/python_logo.jpg') }}" class="image"/>
+            <button onclick="shutdownServer()" class="btn btn-danger">Shut Down Server</button>
+        </div>
+    </div>
+</body>
+</html>
