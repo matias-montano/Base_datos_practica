@@ -3,12 +3,7 @@ import sqlite3
 import random
 import os
 
-# conn = sqlite3.connect('example.db')    # se crea la base de datos
-# cursor = conn.cursor()                  # se crea el cursor
-# cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
-# conn.commit()
-# conn.close()
-
+sql_lite_blueprint = Blueprint('sql_lite', __name__)
 
 @sql_lite_blueprint.route('/sql_lite')
 def sql_lite():
@@ -18,12 +13,14 @@ def sql_lite():
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
     result = cursor.fetchone()
     conn.close()
+    data = None  # Initialize the data variable
     if result:
         # consulto datos
         data = retornar_datos()
     else:
         # creo la tabla y coloco datos aleatorios
         crear_aleatorio()
+        data = retornar_datos()
     return render_template("sql_lite.html", data=data)
 
 def crear_aleatorio():
