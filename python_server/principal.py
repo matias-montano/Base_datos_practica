@@ -3,6 +3,7 @@ import signal
 from flask import Flask, render_template, request, redirect
 ############################################################################################################
 from calculadora_blueprint import calculator_blueprint
+from sql_lite_blueprint import sql_lite_blueprint
 
 # importo el blueprint de inicio
 
@@ -12,6 +13,7 @@ from calculadora_blueprint import calculator_blueprint
 app = Flask(__name__)
 # ------------------------------- blueprints --------------------------------
 app.register_blueprint(calculator_blueprint)
+app.register_blueprint(sql_lite_blueprint)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
